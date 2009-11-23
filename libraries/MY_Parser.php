@@ -101,10 +101,6 @@ class MY_Parser extends CI_Parser {
         // Start benchmark
         $this->CI->benchmark->mark('dwoo_parse_start');
         
-		// Compatibility with PyroCMS v0.9.7 style links
-		// TODO: Remove this for v1.0
-		$string = preg_replace('/\{page_url\[([0-9]+)\]\}/', '{page_url($1)}', $string);
-		
         // Object containing data
         $dwoo_data = new Dwoo_Data();
         
