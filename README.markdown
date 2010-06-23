@@ -1,8 +1,6 @@
 CodeIgniter-Dwoo
 ================
 
-Philip Sturgeon - <email@philsturgeon.co.uk>
-
 Dwoo is a PHP based templating engine aimed as a replacement for Smarty 2.x using similar and alternative syntax.
 CodeIgniter-Dwoo is a simple implementation for using Dwoo in your CodeIgniter view files.
 
@@ -10,12 +8,12 @@ CodeIgniter-Dwoo is a simple implementation for using Dwoo in your CodeIgniter v
 Requirements
 ------------
 
-* Dwoo 1.1+
-* CodeIgniter 1.7.x (not bothered testing it on earlier versions, any point?)
+1. PHP 5.2+
+2. CodeIgniter 1.6.x - 2.0-dev
+3. Dwoo 1.1+
 
 Requirements for Dwoo alone are:
 
-* php 5.2.0 or above (might work below, it's a rough estimate)
 * SPL and PCRE extensions (for php versions prior to 5.3.0)
 * mbstring extension for some string manipulation plugins (especially if you intend to use UTF-8)
 
@@ -45,10 +43,3 @@ Usage
 	$this->load->library('parser');
 	
 	$this->parser->parse('dwoo_test', array('message' => 'OH HAI!'));
-
-
-Contact
--------
-
-If you'd like to request changes, report bug fixes, or contact
-the developer of this library, email <email@philsturgeon.co.uk>
