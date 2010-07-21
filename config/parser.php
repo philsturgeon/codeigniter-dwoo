@@ -88,4 +88,4 @@ $config['parser_allowed_php_functions'] = array(
 |
 */
 
-$config['parser_assign_refs'] = array('load', 'session', 'uri', 'input', 'user_agent');
+$config['parser_assign_refs'] = array('config', 'load', 'session', 'uri', 'input', 'user_agent');
