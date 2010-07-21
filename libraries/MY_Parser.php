@@ -75,7 +75,7 @@ class MY_Parser extends CI_Parser {
 		$dwoo->setCacheTime($this->_parser_cache_time);
 
 		// Security
-		$security = new Dwoo_Security_Policy;
+		$security = new MY_Security_Policy;
 
 		$security->setPhpHandling($this->_parser_allow_php_tags);
 		$security->allowPhpFunction($this->_parser_allowed_php_functions);
@@ -196,6 +196,20 @@ class MY_Parser extends CI_Parser {
 	}
 
 	// --------------------------------------------------------------------
+}
+
+class MY_Security_Policy extends Dwoo_Security_Policy {
+
+	public function callMethod(Dwoo_Core $dwoo, $obj, $method, $args)
+	{
+		return call_user_func_array(array($obj, $method), $args);
+	}
+
+	public function isMethodAllowed()
+	{
+		return TRUE;
+	}
+
 }
 
 // END MY_Parser Class
