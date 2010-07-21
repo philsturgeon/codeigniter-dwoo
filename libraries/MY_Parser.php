@@ -176,8 +176,8 @@ class MY_Parser extends CI_Parser {
 			// render the template
 			$parsed_string = $dwoo->get($tpl, $dwoo_data);
 		}
-		
-		catch (Dwoo_Compilation_Exception $e)
+
+		catch (Exception $e)
 		{
 			show_error($e);
 		}
