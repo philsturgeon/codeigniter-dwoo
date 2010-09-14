@@ -162,6 +162,22 @@ class MY_Parser extends CI_Parser {
 			$data[$ref] = & $this->_ci->{$ref};
 		}
 
+		// --------------------------------------------------------------------
+
+		// Parse out the elapsed time and memory usage,
+		// then swap the pseudo-variables with the data
+
+		$elapsed = $this->_ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
+
+		if ($this->_ci->output->parse_exec_vars === TRUE)
+		{
+			$memory	 = ( ! function_exists('memory_get_usage')) ? '0' : round(memory_get_usage()/1024/1024, 2).'MB';
+
+			$string = str_replace(array('{elapsed_time}', '{memory_usage}'), array($elapsed, $memory), $string);
+		}
+
+		// --------------------------------------------------------------------
+
 		// Object containing data
 		$dwoo_data = new Dwoo_Data;
 		$dwoo_data->setData($data);
@@ -209,7 +225,6 @@ class MY_Security_Policy extends Dwoo_Security_Policy {
 	{
 		return TRUE;
 	}
-
 }
 
 // END MY_Parser Class
