@@ -155,13 +155,8 @@ class MY_Parser extends CI_Parser {
 		// then swap the pseudo-variables with the data
 
 		$elapsed = $this->_ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
-
-		if (CI_VERSION < 2 OR $this->_ci->output->parse_exec_vars === TRUE)
-		{
-			$memory = ( ! function_exists('memory_get_usage')) ? '0' : round(memory_get_usage() / 1024 / 1024, 2) . 'MB';
-
-			$string = str_replace(array('{elapsed_time}', '{memory_usage}'), array($elapsed, $memory), $string);
-		}
+		$memory = ( ! function_exists('memory_get_usage')) ? '0' : round(memory_get_usage() / 1024 / 1024, 2) . 'MB';
+		$string = str_replace(array('{elapsed_time}', '{memory_usage}'), array($elapsed, $memory), $string);
 
 		// --------------------------------------------------------------------
 		// Object containing data
