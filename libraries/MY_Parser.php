@@ -151,16 +151,11 @@ class MY_Parser extends CI_Parser {
 		}
 
 		// --------------------------------------------------------------------
-		// Parse out the elapsed time and memory usage,
-		// then swap the pseudo-variables with the data
-
-		$elapsed = $this->_ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
+		// Convert elapsed time and memory usage for dwoo compatibility
 
 		if (CI_VERSION < 2)
 		{
-			$memory = ( ! function_exists('memory_get_usage')) ? '0' : round(memory_get_usage() / 1024 / 1024, 2) . 'MB';
-
-			$string = str_replace(array('{elapsed_time}', '{memory_usage}'), array($elapsed, $memory), $string);
+			$string = str_replace(array('{elapsed_time}', '{memory_usage}'), array('[elapsed_time]', [memory_usage]), $string);
 		}
 
 		// --------------------------------------------------------------------
@@ -181,6 +176,19 @@ class MY_Parser extends CI_Parser {
 		catch (Exception $e)
 		{
 			show_error($e);
+		}
+
+		// --------------------------------------------------------------------
+		// Parse out the elapsed time and memory usage,
+		// then swap the pseudo-variables with the data
+
+		$elapsed = $this->_ci->benchmark->elapsed_time('total_execution_time_start', 'total_execution_time_end');
+
+		if (CI_VERSION < 2)
+		{
+			$memory = ( ! function_exists('memory_get_usage')) ? '0' : round(memory_get_usage() / 1024 / 1024, 2) . 'MB';
+
+			$string = str_replace(array('[elapsed_time]', '[memory_usage]'), array($elapsed, $memory), $string);
 		}
 
 		// Finish benchmark
