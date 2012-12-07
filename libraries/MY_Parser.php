@@ -9,7 +9,6 @@
  * @link		http://philsturgeon.co.uk/code/codeigniter-dwoo
  */
 
-include APPPATH . 'libraries/dwoo/dwooAutoload.php';
 
 class MY_Parser extends CI_Parser {
 
@@ -207,18 +206,20 @@ class MY_Parser extends CI_Parser {
 	// --------------------------------------------------------------------
 }
 
-class MY_Security_Policy extends Dwoo_Security_Policy {
-
-	public function callMethod(Dwoo_Core $dwoo, $obj, $method, $args)
-	{
-		return call_user_func_array(array($obj, $method), $args);
-	}
-
-	public function isMethodAllowed()
-	{
-		return TRUE;
-	}
-}
+/**
+*class MY_Security_Policy extends Dwoo_Security_Policy {
+*
+*	public function callMethod(Dwoo_Core $dwoo, $obj, $method, $args)
+*	{
+*		return call_user_func_array(array($obj, $method), $args);
+*	}
+*
+*	public function isMethodAllowed()
+*	{
+*		return TRUE;
+*	}
+*}
+**/
 
 // END MY_Parser Class
 
