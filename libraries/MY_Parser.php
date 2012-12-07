@@ -155,7 +155,7 @@ class MY_Parser extends CI_Parser {
 
 		if (CI_VERSION < 2)
 		{
-			$string = str_replace(array('{elapsed_time}', '{memory_usage}'), array('[elapsed_time]', [memory_usage]), $string);
+			$string = str_replace(array('{elapsed_time}', '{memory_usage}'), array('[elapsed_time]', '[memory_usage]'), $string);
 		}
 
 		// --------------------------------------------------------------------
